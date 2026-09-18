@@ -18,6 +18,9 @@ public class Series {
     private String title;
 
     @Column(columnDefinition = "text")
+    private String description;
+
+    @Column(columnDefinition = "text")
     private String imageUrl;
 
     @Column(columnDefinition = "text")
@@ -26,10 +29,10 @@ public class Series {
     public Series() {
     }
 
-    public Series(String title, String imageUrl, String watchUrl) {
+    public Series(String title, String description, String imageUrl, String watchUrl) {
         this.title = title;
+        this.description = description;
         this.imageUrl = imageUrl;
         this.watchUrl = watchUrl;
     }
-
 }

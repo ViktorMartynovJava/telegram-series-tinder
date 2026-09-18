@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface SeriesRepository extends JpaRepository<Series, Long> {
     @Query(value = "SELECT * FROM series s WHERE s.id NOT IN (SELECT series_id FROM swipes WHERE telegram_id = :userId) LIMIT 1", nativeQuery = true)
     Optional<Series> findNextUnseenSeries(@Param("userId") Long userId);
+    boolean existsByTitle(String title);
 }

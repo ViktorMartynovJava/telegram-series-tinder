@@ -66,8 +66,8 @@ public class SeriesTinderBot extends TelegramLongPollingBot {
                     userRepository.save(partner);
                 }
 
-                sendMessage(chatId, "✅ Отлично! Вы успешно привязаны к партнеру. Открывайте приложение и начинайте свайпать!");
-                sendMessage(partnerId, "🎉 Партнер перешел по вашей ссылке! Теперь ваши совпадения общие.");
+                sendMessage(chatId, "Отлично! Вы успешно привязаны к партнеру. Открывайте приложение и начинайте свайпать!");
+                sendMessage(partnerId, "Партнер перешел по вашей ссылке! Теперь ваши совпадения общие.");
 
             } catch (NumberFormatException e) {
                 sendMessage(chatId, "Ошибка: неверная ссылка.");

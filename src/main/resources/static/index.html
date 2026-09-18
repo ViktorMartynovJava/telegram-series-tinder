@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Series Tinder</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 <div id="app">
-    <button id="btn-share" class="btn-share">🔗 Отправить приглашение партнеру</button>
+    <button id="btn-share" class="btn-share">🔗 Отправить приглашение другу</button>
+
 
     <div id="card" class="card">
-        <img id="series-image" src="" alt="Постер сериала">
-        <div class="card-info">
-            <h2 id="series-title">Загрузка...</h2>
-        </div>
+        <img id="series-image" src="" alt="Обложка">
+        <p id="series-description" class="description-text"></p>
+        <h2 id="series-title">Загрузка...</h2>
     </div>
 
     <div class="controls" id="controls">
@@ -25,9 +26,10 @@
 
     <div id="empty-state" class="hidden">
         <h2>Новых сериалов пока нет 😢</h2>
-        <p>Вы просмотрели всё, что было в базе.</p>
+        <p>Это пока все что есть на данный момент</p>
     </div>
 </div>
-<script src="app.js"></script>
+
+<script src="app.js?v=4"></script>
 </body>
 </html>
