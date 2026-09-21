@@ -1,6 +1,6 @@
 package org.martynov.dev.service;
 
-import org.martynov.dev.bot.SeriesTinderBot; // <-- Импортируем бота
+import org.martynov.dev.bot.SeriesTinderBot;
 import org.martynov.dev.entity.AppUser;
 import org.martynov.dev.entity.Series;
 import org.martynov.dev.entity.Swipe;

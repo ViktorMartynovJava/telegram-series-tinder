@@ -48,12 +48,18 @@ public class TelegramChannelParserService {
                     if (fullText.trim().isEmpty()) continue;
 
                     String[] lines = fullText.split("\n");
-                    String title = lines[0].trim();
+                    String rawTitle = lines[0].trim();
 
-                    // Очищаем от кавычек
-                    title = title.replace("\"", "")
+                    if (!rawTitle.startsWith("\"") && !rawTitle.startsWith("«") && !rawTitle.startsWith("“")) {
+                        continue;
+                    }
+
+                    // Очищаем название от кавычек
+                    String title = rawTitle.replace("\"", "")
                             .replace("«", "")
                             .replace("»", "")
+                            .replace("“", "")
+                            .replace("”", "")
                             .replace("'", "")
                             .trim();
 
