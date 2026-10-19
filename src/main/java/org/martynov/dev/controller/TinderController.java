@@ -27,7 +27,8 @@ public class TinderController {
                 request.telegramId(),
                 request.seriesId(),
                 request.isLiked()
-        );
+        ).isPresent();
+
         return isMatch ? "MATCH" : "OK";
     }
 }

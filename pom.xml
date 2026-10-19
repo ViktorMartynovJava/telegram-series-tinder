@@ -19,9 +19,9 @@
     <description>Telegram Mini App for matching series</description>
 
     <properties>
-        <java.version>21</java.version>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
+        <java.version>17</java.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- Версия библиотеки для Telegram-бота -->
         <telegrambots.version>6.9.7</telegrambots.version>
@@ -68,7 +68,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Возвращаем поддержку JAXB для Java 11+ -->
+        <!-- Поддержка JAXB для Java 11+ -->
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
@@ -80,7 +80,6 @@
             <artifactId>jsoup</artifactId>
             <version>1.17.2</version>
         </dependency>
-
     </dependencies>
 
     <build>

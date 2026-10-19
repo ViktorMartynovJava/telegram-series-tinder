@@ -12,22 +12,25 @@ import java.util.Optional;
 @Repository
 public interface SeriesRepository extends JpaRepository<Series, Long> {
 
-    @Query(value = "SELECT * FROM series s WHERE s.id NOT IN (SELECT series_id FROM swipes WHERE telegram_id = :userId) LIMIT 1", nativeQuery = true)
-    Optional<Series> findNextUnseenSeries(@Param("userId") Long userId);
-
     boolean existsByTitle(String title);
 
-    @Query("""
-        SELECT s FROM Series s
-        WHERE s.id IN (
-            SELECT sw1.seriesId FROM Swipe sw1 
-            WHERE sw1.telegramId = :user1Id AND sw1.isLiked = true
-        )
-        AND s.id IN (
-            SELECT sw2.seriesId FROM Swipe sw2 
-            WHERE sw2.telegramId = :user2Id AND sw2.isLiked = true
-        )
-        ORDER BY s.id DESC
-    """)
+    @Query(value = """
+            SELECT s.* FROM series s
+            WHERE NOT EXISTS (
+                SELECT 1 FROM swipes sw
+                WHERE sw.series_id = s.id 
+                  AND sw.telegram_id = :telegramId
+            )
+            ORDER BY s.rating DESC NULLS LAST, s.id ASC
+            LIMIT 1
+            """, nativeQuery = true)
+    Optional<Series> findNextUnseenSeries(@Param("telegramId") Long telegramId);
+
+    @Query(value = """
+            SELECT s.* FROM series s
+            JOIN swipes sw1 ON sw1.series_id = s.id AND sw1.telegram_id = :user1Id AND sw1.is_liked = true
+            JOIN swipes sw2 ON sw2.series_id = s.id AND sw2.telegram_id = :user2Id AND sw2.is_liked = true
+            ORDER BY s.rating DESC NULLS LAST
+            """, nativeQuery = true)
     List<Series> findMatchesForPair(@Param("user1Id") Long user1Id, @Param("user2Id") Long user2Id);
 }
